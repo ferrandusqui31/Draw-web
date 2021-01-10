@@ -14,7 +14,10 @@ var w = document.getElementById('w'),
     posX = 150,
     posY = 75,
     draw = false;
-    
+
+ctx2.beginPath();
+ctx2.arc(posX, posY, 1, 0, 2*Math.PI);
+ctx2.stroke();
 ctx2.beginPath();
 ctx2.arc(posX, posY, 1, 0, 2*Math.PI);
 ctx2.stroke();
@@ -68,8 +71,14 @@ if(draw === true){
         ctx.beginPath();
         ctx.arc(posX, posY, 1, 0, 2*Math.PI);
         ctx.stroke();
+        ctx.beginPath();
+        ctx.arc(posX, posY, 1, 0, 2*Math.PI);
+        ctx.stroke();
     }
     canvas2.width = canvas2.width;
+    ctx2.beginPath();
+    ctx2.arc(posX, posY, 1, 0, 2*Math.PI);
+    ctx2.stroke();
     ctx2.beginPath();
     ctx2.arc(posX, posY, 1, 0, 2*Math.PI);
     ctx2.stroke();
