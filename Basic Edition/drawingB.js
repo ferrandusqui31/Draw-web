@@ -21,6 +21,9 @@ ctx2.stroke();
 ctx2.beginPath();
 ctx2.arc(posX, posY, 1, 0, 2*Math.PI);
 ctx2.stroke();
+ctx2.beginPath();
+ctx2.arc(posX, posY, 1, 0, 2*Math.PI);
+ctx2.stroke();
 
 window.addEventListener('keypress', getKey);
 
@@ -74,8 +77,14 @@ if(draw === true){
         ctx.beginPath();
         ctx.arc(posX, posY, 1, 0, 2*Math.PI);
         ctx.stroke();
+        ctx.beginPath();
+        ctx.arc(posX, posY, 1, 0, 2*Math.PI);
+        ctx.stroke();
     }
     canvas2.width = canvas2.width;
+    ctx2.beginPath();
+    ctx2.arc(posX, posY, 1, 0, 2*Math.PI);
+    ctx2.stroke();
     ctx2.beginPath();
     ctx2.arc(posX, posY, 1, 0, 2*Math.PI);
     ctx2.stroke();
