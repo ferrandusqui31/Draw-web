@@ -24,3 +24,8 @@ I woulld like you to create new tools on the app as circles or arcs.
 ## Basic Edition:
 
 ![](assets/BasicEdition_Asset.png)
+Image by Marc
+
+![](assets/BasicEditionCSS_Asset.png)
+
+Image by Guille
