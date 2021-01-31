@@ -7,13 +7,15 @@
     <title>¡Draw!</title>
     <link rel="stylesheet" href="drawingIE.css" type="text/css">
     <link rel="stylesheet" href="../general/normalize.css">
-    <script src="../general/jquery-3.5.1.min.js"></script>
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="../general/fontawesome/css/solid.min.css">
+    <link rel="stylesheet" href="../general/fontawesome/css/fontawesome.min.css">
 </head>
 <body>
     <div class="grid">
         <div class="title">
             <h1><u>¡Draw!</u></h1>
-            <h3>Import Export Edition</h3>
+            <h3 class="subtitle">Import Export Edition</h3>
         </div>
         <div class="canvas-div">
             <div class="canvas" id="canvas-group">
@@ -45,12 +47,26 @@
                 
                 <label class="form__btn" for="download">Download</label>
                 <input type="button" id="download" class="hide"/>
+                
+                <div class="infoIconDiv"><i id="infoIcon" class="fas fa-question infoIcon"></i></div>
             </form>
         </div>
-        
+    </div>
+    
+    <div id="infoContainer" class="infoContainer hide">
+        <div class="infoBox">
+            <h3 class="info__title">Instructions:</h3>
+            <ul class="info__list">
+                <li>W, A, S, D to move the cursor</li>
+                <li>Space to switch drawinf on/off</li>
+                <li>Import to upload an image</li>
+                <li>Download to download the image</li>
+            </ul>
+            <div class="infoCrossDiv"><i id="infoCross" class="fas fa-times infoCross"></i></div>
+        </div>
     </div>
     
     <img src="" class="hide" id="imgConverted">
-<script src="drawingIE.js"></script>
+    <script src="drawingIE.js"></script>
 </body>
 </html>
