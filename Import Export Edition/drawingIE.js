@@ -20,6 +20,9 @@ const clear = document.getElementById('clear');
 var clearIMG = document.getElementById('clearIMG');
 var downloadBtn = document.getElementById('download');
 var imgConverted = document.getElementById('imgConverted');
+const infoIcon = document.getElementById('infoIcon');
+const infoCross = document.getElementById('infoCross');
+const infoContainer = document.getElementById('infoContainer');
 
 // Initial cursor draws
 ctx2.beginPath();
@@ -38,6 +41,12 @@ inputFile.addEventListener('change', displayImage);
 clear.addEventListener('click', function(){canvas.width = canvas.width;});
 clearIMG.addEventListener('click', funcClearIMG);
 downloadBtn.addEventListener('click', download);
+infoIcon.addEventListener('click', function(){
+    infoContainer.classList.remove('hide');
+});
+infoCross.addEventListener('click', function(){
+    infoContainer.classList.add('hide');
+});
 
 function download(){
     // // Create Image
