@@ -4,13 +4,13 @@
 const drawText = document.getElementById('drawing');
 const canvas = document.getElementById('canvas');
 const canvas2 = document.getElementById('canvas2');
-const canvas3 = document.getElementById('canvas3');
+var canvas3 = document.getElementById('canvas3');
 const mixCanvas = document.getElementById('mixCanvas');
 const posXText = document.getElementById('positionX');
 const posYText = document.getElementById('positionY');
 const ctx = canvas.getContext('2d');
 const ctx2 = canvas2.getContext('2d');
-const ctx3 = canvas3.getContext('2d');
+var ctx3 = canvas3.getContext('2d');
 const ctxMix = mixCanvas.getContext('2d');
 var posX = 150;
 var posY = 75;
@@ -99,25 +99,28 @@ function funcClearIMG(){
 }
 
 function displayImage(){
-  var preview = document.querySelector('img');
   var file    = document.querySelector('input[type=file]').files[0];
   var reader  = new FileReader();
   var img = document.getElementById('img');
+  canvas3 = document.getElementById('canvas3');
+  ctx3 = canvas3.getContext('2d');
 
   reader.onloadend = function () {
-        preview.src = reader.result;
+        img.src = reader.result;
     };
-
+    
     if(file){
         reader.readAsDataURL(file);
     }else {
-        preview.src = "";
+        img.src = "";
         ctx3 = null;
     }
     
     var interval = setInterval(function(){
         ctx3.drawImage(img, 0, 0, 300, 150);
     }, 1);
+    
+    file = null;
 }
 
 function getKey(event){
