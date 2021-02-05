@@ -23,6 +23,8 @@ var imgConverted = document.getElementById('imgConverted');
 const infoIcon = document.getElementById('infoIcon');
 const infoCross = document.getElementById('infoCross');
 const infoContainer = document.getElementById('infoContainer');
+var img = document.getElementById('img');
+var interval;
 
 // Initial cursor draws
 ctx2.beginPath();
@@ -49,11 +51,12 @@ infoCross.addEventListener('click', function(){
 });
 
 function download(){
-    // // Create Image
+    // Create Image
     
-    var dataURI = canvas3.toDataURL();
+    if(canvas3 !== null){
+        var dataURI = canvas3.toDataURL();
     imgConverted.src = dataURI;
-    
+    }
     
     setTimeout(step2, 1);
     setTimeout(step3, 2);
@@ -83,11 +86,13 @@ function download(){
             a.click();
             document.body.removeChild(a);
         }, 1);
-        
     }
 }
 
 function funcClearIMG(){
+    
+    
+    
     var beforeCanvas = document.getElementById('canvas3');
     var afterCanvas = document.createElement('canvas');
     const parent = document.getElementById('canvas-group');
@@ -96,12 +101,17 @@ function funcClearIMG(){
     afterCanvas.setAttribute('id', 'canvas3');
     
     parent.replaceChild(afterCanvas, beforeCanvas);
+    
+    canvas3 = null;
+    ctx3 = null;
+    
+    clearInterval(interval);
 }
 
 function displayImage(){
   var file    = document.querySelector('input[type=file]').files[0];
   var reader  = new FileReader();
-  var img = document.getElementById('img');
+  img = document.getElementById('img');
   canvas3 = document.getElementById('canvas3');
   ctx3 = canvas3.getContext('2d');
 
@@ -116,7 +126,7 @@ function displayImage(){
         ctx3 = null;
     }
     
-    var interval = setInterval(function(){
+    interval = setInterval(function(){
         ctx3.drawImage(img, 0, 0, 300, 150);
     }, 1);
     
@@ -125,7 +135,6 @@ function displayImage(){
 
 function getKey(event){
     var key = event.keyCode;
-    
     switch(key){
         case 119:
             reviseCoord('y', 'substract');
