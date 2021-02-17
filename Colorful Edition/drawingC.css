@@ -1,0 +1,322 @@
+/* Project created by ferrandusqui31 */
+
+/*Title*/
+@font-face{
+  font-family: 'Acme';
+  src: url(../general/fonts/acme-regular.woff2);
+}
+
+/*Subtitle*/
+@font-face{
+    font-family: 'Squada One';
+    src: url(../general/fonts/squadaone-regular.woff2);
+}
+
+/*Normal Text*/
+@font-face{
+    font-family: 'Yanone Kaffeesatz';
+    src: url(../general/fonts/yanonekaffeesatz.woff2);
+}
+
+@font-face{
+    font-family: 'Abel';
+    src: url(../general/fonts/abel-regular.woff2);
+}
+
+h1{
+    text-align: center;
+    font-family: 'Acme', sans-serif;
+    font-size: 45px;
+}
+
+.subtitle{
+    text-align: center;
+    font-family: 'Squada One', cursive;
+    font-size: 20px;
+}
+
+.grid{
+    display: grid;
+    grid-template-areas:    'title   title       title'
+                            'form      canvas      info';
+    grid-template-columns: 30% 50% 20%;
+    justify-content: center;
+}
+
+.title{
+    grid-area: title;
+    text-align: center;
+    justify-items: center;
+}
+
+.canvas-div{
+    position: relative;
+    grid-area: canvas;
+    justify-items: center;
+    margin-right: 40%;
+    margin-left: 40%;
+}
+
+.info{
+    grid-area: info;
+    text-align: right;
+}
+
+.drawing--no{
+    color: #E82D2D;
+}
+
+.drawing--yes{
+    color: #27982B;
+}
+
+.canvasElement{
+    border: 3px #000 solid;
+    width: 400%;
+    position: absolute;
+    left: -197%;
+}
+
+h4{
+    font-size: 25px;
+    margin: 20px;
+    font-family: 'Yanone Kaffeesatz';
+    font-weight: 600;
+}
+
+
+
+.form{
+    grid-area: form;
+}
+
+.form__grid{
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    gap: 7px;
+    margin: 15px;
+    margin-top: 0;
+    justify-content: end;
+}
+
+.form__btn{
+    font-family: 'Yanone Kaffeesatz';
+    font-size: 23px;
+    font-weight: 600;
+    padding: 5px;
+    background: #e5e5e5;
+    border: 2px #000 solid;
+    grid-column: 2 / span 2;
+    text-align: center;
+    align-self: center;
+}
+
+.infoIconDiv{
+    display: flex;
+    grid-column: -2 / -1;
+    justify-self: right;
+    width: 35px;
+    height: 45px;
+    justify-content: center;
+    align-items: center;
+}
+
+.infoIcon{
+    font-size: 25px;
+    background: #3856FF;
+    color: #fff;
+    padding: 10px;
+    border-radius: 9px;
+}
+
+.form__btn:hover{
+    background: #b8b8b8;
+    cursor: pointer;
+}
+
+.form__btn:active{
+    background: #A5A5A5;
+}
+
+.form__btn::selection{
+    background: none;
+}
+
+.infoIcon:hover{
+    background: #2E39E1;
+    cursor: pointer;
+}
+
+.infoIcon:active{
+    font-size: 20px;
+}
+
+.infoContainer{
+    display: flex;
+    background: rgba(0, 0, 0, .5);
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.infoBox{
+    display: flex;
+    background: #fff;
+    height: 75%;
+    width: 60%;
+    border-radius: 20px;
+    justify-content: space-around;
+}
+
+.info__text{
+    position: relative;
+    right: 15%;
+}
+
+.info__title{
+    font-family: 'Abel';
+    font-size: 25px;
+    margin-left: 20px;
+}
+
+.info__list li{
+    font-family: 'Abel';
+    font-size: 20px;
+    margin: 5px 0;
+}
+
+.infoCrossDiv{
+    display: flex;
+    position: relative;
+    left: 15%;
+    top: 5px;
+    width: 35px;
+    height: 35px;
+    justify-content: center;
+    align-items: center;
+}
+
+.infoCross{
+    font-size: 35px;
+    color: #C5C5C5;
+}
+
+.infoCross:hover{
+    color: #ADADAD;
+    cursor: pointer;
+}
+
+.infoCross:active{
+    font-size: 30px;
+}
+
+.hide{
+    display: none;
+}
+
+.colors{
+    display: grid;
+    grid-template-areas:    'color-red      color-orange    color-yellow    color-green     color-lightBlue     color-blue      color-violet    color-pink'
+                            'gray-white     gray-white      gray-lightGray  gray-lightGray  gray-darkGray       gray-darkGray   gray-black      gray-black';
+    gap: 5px;
+    position: absolute;
+    left: -163%;
+    top: 110%;
+}
+
+.color{
+    width: 50px;
+    height: 50px;
+    border: solid #000 1px;
+}
+
+.color:active{
+    border: solid #000 2px;
+    width: 48px;
+    height: 48px;
+}
+
+.gray{
+    width: 110px;
+    height: 50px;
+    border: solid #000 1px;
+}
+
+.gray:active{
+    width: 108px;
+    height: 48px;
+    border: solid #000 2px;
+}
+
+.color-box:hover{
+    cursor: pointer;
+}
+
+.colors__colors--red{
+    background: #f00;
+    grid-area: color-red;
+}
+
+.colors__colors--orange{
+    background: #ffa200;
+    grid-area: color-orange;
+}
+
+.colors__colors--yellow{
+    background: #ff0;
+    grid-area: color-yellow;
+}
+
+.colors__colors--green{
+    background: #0f0;
+    grid-area: color-green;
+}
+
+.colors__colors--lightBlue{
+    background: #0ff;
+    grid-area: color-lightBlue;
+}
+
+.colors__colors--blue{
+    background: #00f;
+    grid-area: color-blue;
+}
+
+.colors__colors--violet{
+    background: #9600ff;
+    grid-area: color-violet;
+}
+
+.colors__colors--pink{
+    background: #f0f;
+    grid-area: color-pink;
+}
+
+.grays--white{
+    background: #fff;
+    grid-area: gray-white;
+}
+
+.grays--lightGray{
+    background: #aaa;
+    grid-area: gray-lightGray;
+}
+
+.grays--darkGray{
+    background: #555;
+    grid-area: gray-darkGray;
+}
+
+.grays--black{
+    background: #000;
+    grid-area: gray-black;
+    width: 108px;
+}
+
+.grays--black:active{
+    width: 106px;
+}
