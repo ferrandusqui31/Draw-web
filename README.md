@@ -17,12 +17,3 @@ You can download this project and use it or edit it if it will be uploaded in th
 
 
 I woulld like you to create new tools on the app as circles or arcs.
-
-
-# Examples of what can you do:
-
-## Basic Edition / CSS:
-
-![](assets/BasicEdition_Asset.png)
-
-![](assets/BasicEditionCSS_Asset.png)
