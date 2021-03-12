@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "¡Draw!",
+  "description": "Drawing simple software. Created by ferrandusqui31",
+  "version": "3",
+  "icons": {
+    "128": "Draw_Icon_128px.png"
+  },
+  "app": {
+    "background":{
+        "scripts": ["background.js"]
+    }
+  },
+  "kiosk_enabled": true
+}
