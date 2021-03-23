@@ -25,6 +25,7 @@ const infoCross = document.getElementById('infoCross');
 const infoContainer = document.getElementById('infoContainer');
 var img = document.getElementById('img');
 var interval;
+
 // Color variables
 var color__red = document.getElementById('color__red'),
     color__orange = document.getElementById('color__orange'),
@@ -52,6 +53,8 @@ ctx2.stroke();
 // Event Listeners
 // When is pressed any key
 window.addEventListener('keypress', getKey);
+// When is pressed any key (for arrows)
+window.addEventListener('keydown', getKeyDown);
 
 // When is uploaded an image
 inputFile.addEventListener('change', displayImage);
@@ -88,6 +91,26 @@ color__white.addEventListener('click', function(){colorChange('#fff')});
 color__lightGray.addEventListener('click', function(){colorChange('#aaa')});
 color__darkGray.addEventListener('click', function(){colorChange('#555')});
 color__black.addEventListener('click', function(){colorChange('#000')});
+
+function getKeyDown(event){
+    var key = event.keyCode;
+    
+    switch(key){
+        case 38:
+            reviseCoord('y', 'substract');
+            break;
+        case 37:
+            reviseCoord('x', 'substract');
+            break;
+        case 40:
+            reviseCoord('y', 'add');
+            break;
+        case 39:
+            reviseCoord('x', 'add');
+            break;
+    }
+    afterclick();
+}
 
 function colorChange(color){
     ctx.strokeStyle = color;
@@ -210,8 +233,39 @@ function getKey(event){
                 drawText.innerHTML = 'Drawing';
                 drawText.classList.add('drawing--yes');
                 drawText.classList.remove('drawing--no');
-            }
+        }
     }
+    afterclick();
+}
+
+function afterclick(){
+    
+positionX.innerHTML = posX;
+positionY.innerHTML = posY;
+
+// Drawing in cordinates
+if(draw === true){
+        ctx.beginPath();
+        ctx.arc(posX, posY, 1, 0, 2*Math.PI);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.arc(posX, posY, 1, 0, 2*Math.PI);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.arc(posX, posY, 1, 0, 2*Math.PI);
+        ctx.stroke();
+}
+    canvas2.width = canvas2.width;
+    ctx2.beginPath();
+    ctx2.arc(posX, posY, 1, 0, 2*Math.PI);
+    ctx2.stroke();
+    ctx2.beginPath();
+    ctx2.arc(posX, posY, 1, 0, 2*Math.PI);
+    ctx2.stroke();
+    ctx2.beginPath();
+    ctx2.arc(posX, posY, 1, 0, 2*Math.PI);
+    ctx2.stroke();
+}
 
 function reviseCoord(shaft, action){
     if(shaft === 'x'){
@@ -239,31 +293,4 @@ function reviseCoord(shaft, action){
             }
         }
     }
-}
-
-positionX.innerHTML = posX;
-positionY.innerHTML = posY;
-
-// Drawing in cordinates
-if(draw === true){
-        ctx.beginPath();
-        ctx.arc(posX, posY, 1, 0, 2*Math.PI);
-        ctx.stroke();
-        ctx.beginPath();
-        ctx.arc(posX, posY, 1, 0, 2*Math.PI);
-        ctx.stroke();
-        ctx.beginPath();
-        ctx.arc(posX, posY, 1, 0, 2*Math.PI);
-        ctx.stroke();
-}
-    canvas2.width = canvas2.width;
-    ctx2.beginPath();
-    ctx2.arc(posX, posY, 1, 0, 2*Math.PI);
-    ctx2.stroke();
-    ctx2.beginPath();
-    ctx2.arc(posX, posY, 1, 0, 2*Math.PI);
-    ctx2.stroke();
-    ctx2.beginPath();
-    ctx2.arc(posX, posY, 1, 0, 2*Math.PI);
-    ctx2.stroke();
 }
