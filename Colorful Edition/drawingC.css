@@ -84,8 +84,6 @@ h4{
     font-weight: 600;
 }
 
-
-
 .form{
     grid-area: form;
 }
@@ -173,8 +171,8 @@ h4{
 }
 
 .info__text{
-    position: relative;
-    right: 15%;
+    position: absolute;
+    left: 20%;
 }
 
 .info__title{
@@ -191,9 +189,9 @@ h4{
 
 .infoCrossDiv{
     display: flex;
-    position: relative;
-    left: 15%;
-    top: 5px;
+    position: absolute;
+    left: 77%;
+    top: 13%;
     width: 35px;
     height: 35px;
     justify-content: center;
@@ -214,17 +212,15 @@ h4{
     font-size: 30px;
 }
 
-.hide{
-    display: none;
-}
+
 
 .colors{
     display: grid;
-    grid-template-areas:    'color-red      color-orange    color-yellow    color-green     color-lightBlue     color-blue      color-violet    color-pink'
-                            'gray-white     gray-white      gray-lightGray  gray-lightGray  gray-darkGray       gray-darkGray   gray-black      gray-black';
+    grid-template-areas:    'color-red      color-orange    color-yellow    color-green     color-lightBlue     color-blue      color-violet    color-pink      actualColor'
+                            'gray-white     gray-white      gray-lightGray  gray-lightGray  gray-darkGray       gray-darkGray   gray-black      gray-black      actualColor';
     gap: 5px;
-    position: absolute;
-    left: -163%;
+    position: relative;
+    left: -196%;
     top: 110%;
 }
 
@@ -238,6 +234,15 @@ h4{
     border: solid #000 2px;
     width: 48px;
     height: 48px;
+}
+
+#actualColor{
+    border: solid #000 1px;
+    background: #000;
+    height: 105px;
+    width: 50px;
+    margin-left: 10px;
+    grid-area: actualColor;
 }
 
 .gray{
@@ -319,4 +324,27 @@ h4{
 
 .grays--black:active{
     width: 106px;
+}
+
+.radInput{
+	width: 1.5em;
+	font-size: 1.1em;
+}
+
+.radInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.radLabel{
+	font-family: 'Yanone Kaffeesatz';
+	font-size: 23px;
+	font-weight: 600;
+}
+
+.divRad{
+	margin-right: 15px;
+}
+
+.hide{
+    display: none;
 }
