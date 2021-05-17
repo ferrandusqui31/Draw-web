@@ -40,12 +40,18 @@
                 <div id="color__lightGray" class="color-box gray grays--lightGray"></div>
                 <div id="color__darkGray" class="color-box gray grays--darkGray"></div>
                 <div id="color__black" class="color-box gray grays--black"></div>
+                <!--Color Being used-->
+                <div id="actualColor"></div>
             </div>
         </div>
         <div class="info">
             <h4 class="drawing--no" id="drawing">Not Drawing</h4>
             <h4>Position X: <span id="positionX">150</span> / 300</h4>
             <h4>Position Y: <span id="positionY">75</span> / 150</h4>
+            <div class="divRad">
+            	<label class="radLabel" for="rad">Radius:</label>
+          	<input class="radInput" type="number" name="rad" id="rad" value="1"/>
+            </div>
         </div>
         <div class="form">
             <form class="form__grid">
@@ -78,8 +84,9 @@
                     <li>S or down arrow to go down</li>
                     <li>A or left arrow to go left</li>
                     <li>D or right arrow to go right</li>
-                    <li>Space to switch drawinf on/off</li>
-                    <li>Click a color to select it.</li>
+                    <li>Space to switch drawing on/off</li>
+                    <li>Click a color to select it</li>
+                    <li>The radius of the circle can be decimal</li>
                 </ul>
             </div>
             <div class="infoCrossDiv"><i id="infoCross" class="fas fa-times infoCross"></i></div>
