@@ -14,6 +14,7 @@ var ctx3 = canvas3.getContext('2d');
 const ctxMix = mixCanvas.getContext('2d');
 var posX = 150;
 var posY = 75;
+var rad = 1;
 var draw = false;
 const inputFile = document.getElementById('file');
 const clear = document.getElementById('clear');
@@ -25,6 +26,8 @@ const infoCross = document.getElementById('infoCross');
 const infoContainer = document.getElementById('infoContainer');
 var img = document.getElementById('img');
 var interval;
+const actualColor = document.getElementById('actualColor');
+var radElement = document.getElementById('rad');
 
 // Color variables
 var color__red = document.getElementById('color__red'),
@@ -40,20 +43,21 @@ var color__red = document.getElementById('color__red'),
     color__darkGray = document.getElementById('color__darkGray'),
     color__black = document.getElementById('color__black');
 
+
 ctx2.beginPath();
-ctx2.arc(posX, posY, 1, 0, 2*Math.PI);
+ctx2.arc(posX, posY, rad, 0, 2*Math.PI);
 ctx2.stroke();
 ctx2.beginPath();
-ctx2.arc(posX, posY, 1, 0, 2*Math.PI);
+ctx2.arc(posX, posY, rad, 0, 2*Math.PI);
 ctx2.stroke();
 ctx2.beginPath();
-ctx2.arc(posX, posY, 1, 0, 2*Math.PI);
+ctx2.arc(posX, posY, rad, 0, 2*Math.PI);
 ctx2.stroke();
 
 // Event Listeners
 // When is pressed any key
 window.addEventListener('keypress', getKey);
-// When is pressed any key (for arrows)
+// When is pressed any key (for arrows, ctrl, alt, shift)
 window.addEventListener('keydown', getKeyDown);
 
 // When is uploaded an image
@@ -78,6 +82,9 @@ infoCross.addEventListener('click', function(){
     infoContainer.classList.add('hide');
 });
 
+// Whene the radious is changed
+radElement.addEventListener('change', radChange);
+
 // Color event listeners
 color__red.addEventListener('click', function(){colorChange('#f00')});
 color__orange.addEventListener('click', function(){colorChange('#ffa200')});
@@ -91,6 +98,12 @@ color__white.addEventListener('click', function(){colorChange('#fff')});
 color__lightGray.addEventListener('click', function(){colorChange('#aaa')});
 color__darkGray.addEventListener('click', function(){colorChange('#555')});
 color__black.addEventListener('click', function(){colorChange('#000')});
+
+// General functions
+function radChange(){
+	rad = parseFloat(radElement.value);
+	afterclick();
+}
 
 function getKeyDown(event){
     var key = event.keyCode;
@@ -113,17 +126,18 @@ function getKeyDown(event){
 }
 
 function colorChange(color){
-    ctx.strokeStyle = color;
+    ctx.fillStyle = color;
     ctx2.strokeStyle = color;
+    actualColor.style.background = color;
     canvas2.width = canvas2.width;
     ctx2.beginPath();
-    ctx2.arc(posX, posY, 1, 0, 2*Math.PI);
+    ctx2.arc(posX, posY, rad, 0, 2*Math.PI);
     ctx2.stroke();
     ctx2.beginPath();
-    ctx2.arc(posX, posY, 1, 0, 2*Math.PI);
+    ctx2.arc(posX, posY, rad, 0, 2*Math.PI);
     ctx2.stroke();
     ctx2.beginPath();
-    ctx2.arc(posX, posY, 1, 0, 2*Math.PI);
+    ctx2.arc(posX, posY, rad, 0, 2*Math.PI);
     ctx2.stroke();
 }
 
@@ -245,34 +259,42 @@ positionY.innerHTML = posY;
 
 // Drawing in cordinates
 if(draw === true){
-        ctx.beginPath();
-        ctx.arc(posX, posY, 1, 0, 2*Math.PI);
-        ctx.stroke();
-        ctx.beginPath();
-        ctx.arc(posX, posY, 1, 0, 2*Math.PI);
-        ctx.stroke();
-        ctx.beginPath();
-        ctx.arc(posX, posY, 1, 0, 2*Math.PI);
-        ctx.stroke();
+     ctx.beginPath();
+     ctx.arc(posX, posY, rad + .5, 0, 2*Math.PI);
+     ctx.fill();
+     ctx.beginPath();
+     ctx.arc(posX, posY, rad + .5, 0, 2*Math.PI);
+     ctx.fill();
+     ctx.beginPath();
+     ctx.arc(posX, posY, rad + .5, 0, 2*Math.PI);
+     ctx.fill();
 }
     canvas2.width = canvas2.width;
     ctx2.beginPath();
-    ctx2.arc(posX, posY, 1, 0, 2*Math.PI);
+    ctx2.arc(posX, posY, rad, 0, 2*Math.PI);
     ctx2.stroke();
     ctx2.beginPath();
-    ctx2.arc(posX, posY, 1, 0, 2*Math.PI);
+    ctx2.arc(posX, posY, rad, 0, 2*Math.PI);
     ctx2.stroke();
     ctx2.beginPath();
-    ctx2.arc(posX, posY, 1, 0, 2*Math.PI);
+    ctx2.arc(posX, posY, rad, 0, 2*Math.PI);
     ctx2.stroke();
 }
 
 function reviseCoord(shaft, action){
     if(shaft === 'x'){
-        if(posX < 0){
-            posX = 2;
-        } else if(posX > 300){
-            posX = 298;
+        if(posX < 0 || posX == 0){
+		if(action === 'substract'){
+			posX = 0
+		} else{
+			posX = 2;	
+		}
+        } else if(posX > 300 || posX == 300){
+		if(action === 'add'){
+			posX = 300
+		} else{
+			posX = 298;
+		}
         } else{
             if(action === 'add'){
                 posX = posX + 2;
@@ -281,10 +303,18 @@ function reviseCoord(shaft, action){
             }
         }
     } else if(shaft === 'y'){
-        if(posY < 0){
-            posY = 2;
-        } else if(posY > 150){
-            posY = 148;
+        if(posY < 0 || posY == 0){
+			if(action === 'substract'){
+			posY = 0;	
+			} else{
+				posY = 2;
+			}
+        } else if(posY > 150 || posY == 150){
+			if(action === 'add'){
+				posY = 150
+			} else{
+				posY = 148;
+			}
         } else{
             if(action === 'add'){
                 posY = posY + 2;
